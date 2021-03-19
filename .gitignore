@@ -345,4 +345,29 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij,eclipse,windows,macos,test,visualstudiocode
 
 ### Gauge Report ###
-logs/
+logs/*.out
+.gauge
+reports/
+
+
+### Gradle ###
+.gradle
+build/
+.gradle/*.lock
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
+
+### Gradle Patch ###
+**/build/
+
+# End of https://www.toptal.com/developers/gitignore/api/gradle
