@@ -2,7 +2,7 @@
      I as a app need to list all users because i need show your information
 
 ##Successful Case, List all users
-Tags: successful
+Tags: Api
 sssass
 
 * I want to list all users
