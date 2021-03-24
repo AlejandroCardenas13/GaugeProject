@@ -86,7 +86,7 @@ public class StepUser {
         request.put("email", "emaila@got.com");
         request.put("gender", "Male");
         request.put("status", "Active");
-        request.put("id", getId());
+        request.put("ID", getId());
         postResponse = Unirest.post(BASE_URL + PATH_POST).fields(request).asString();
         System.out.println(postResponse.getBody());//Does not work
 
@@ -101,11 +101,25 @@ public class StepUser {
         request.put("email", "emaila@got.com");
         request.put("gender", "Male");
         request.put("status", "Active");
-        request.put("id", getId());
+        request.put("ID", getId());
         postResponse = Unirest.post(BASE_URL + PATH_POST).body(request).asString();
         System.out.println(postResponse.getHeaders()); //Does not work
 
     }
+
+    //Make a get request to https://reqres.in/api
+    @Step("I want to list all users")
+    public void consultAllUsers() throws UnirestException {
+        System.out.println("Get one");
+        response = Unirest.get(BASE_URL + PATH_LIST_ALL).asJson();
+    }
+
+    //Make a get request to https://reqres.in/api
+    @Step("I consult a user with number ID <id>")
+    public void consultAnUser(String id) throws UnirestException {
+        response = Unirest.get(BASE_URL + PATH_LIST_ONE).routeParam("id", id).asJson();
+    }
+
 
     @Step("The response status code is <statusCode> POST")
     public void validateStatusCode(String statusCode) {
@@ -117,10 +131,6 @@ public class StepUser {
 
     }
 
-    @Step("I consult a user with number ID <id>")
-    public void consultUser(String id) throws UnirestException {
-        response = Unirest.get(BASE_URL + PATH_GET_PUT_AND_DELETE).queryString("id", id).asJson();
-    }
 
     @Step("The response status code is <statusCode> GET")
     public void validateStatusCodeGet(String statusCode) {
@@ -129,15 +139,22 @@ public class StepUser {
 
     @Step("The user whit first name <name> and last name <lastName> should be correct")
     public void validName(String name, String lastName) throws UnirestException {
-        //assertThat(response.getBody().getObject().getJSONObject("data[]").get("name")).isEqualTo(name + lastName); Ask how it is work
+        //assertThat(response.getBody().getObject().getJSONObject("data").get("name")).isEqualTo(name + lastName); //Ask how it is work
+        assertThat(response.getBody().getObject().getJSONObject("data").get("first_name")).isEqualTo(name);
+        assertThat(response.getBody().getObject().getJSONObject("data").get("last_name")).isEqualTo(lastName);
+
+    }
+
+    @Step("All <numberUsers> the expected users should be returned")
+    public void valideteUsers(int numberUsers) throws UnirestException {
 
     }
 
 
 }
-//Make a get request to https://gorest.co.in/
+//Make a get request to https://reqres.in/api
 
-//Make a delete request to https://gorest.co.in/
+//Make a delete request to https://reqres.in/api
 
 //Make a put request with body data (Json)
 

@@ -6,7 +6,7 @@ tags: Api
 sssass
 
 * I add a user with first name "Alejandro" and last name "Cardenas" - First way
-* The response status code is "200" POST
+* The response status code is "201" POST
 * The user was saved correctly
 
 ##Successful Case, Create a new User Second way
@@ -14,7 +14,7 @@ tags: Api
 sssass
 
 * I add a user with first name "Alejandro" and last name "Cardenas" - Second way
-* The response status code is "200" POST
+* The response status code is "201" POST
 * The user was saved correctly
 
 

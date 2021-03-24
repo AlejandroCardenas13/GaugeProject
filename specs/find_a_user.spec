@@ -5,6 +5,6 @@
 Tags: Api
 sssass
 
-* I consult a user with number ID "12"
+* I consult a user with number ID "2"
 * The response status code is "200" GET
-* The user whit first name "Amb." and last name " Gorakhanatha Dutt" should be correct
+* The user whit first name "Janet" and last name "Weaver" should be correct
